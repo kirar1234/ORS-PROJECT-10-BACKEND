@@ -1,0 +1,35 @@
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: ors_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - ors-app
+
+  ors-app:
+    build: .
+    container_name: ors_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/orsproject10
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  mysql_db:
+    image: mysql:8
+    container_name: ors_mysql
+    environment:
+      MYSQL_DATABASE: orsproject10
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
