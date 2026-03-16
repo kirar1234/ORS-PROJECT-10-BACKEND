@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import com.rays.common.UserContext;
 import com.rays.common.UserContextHolder;
@@ -37,13 +39,17 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 	@Autowired
 	private JWTUserDetailsService jwtUserDetailsService;
 
+	@Autowired
+	@Qualifier("handlerExceptionResolver")
+	private HandlerExceptionResolver resolver;
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 
 		final String authorizationHeader = request.getHeader("Authorization");
-		
-		System.out.println("authorizationHeader"+authorizationHeader);
+
+		System.out.println("authorizationHeader" + authorizationHeader);
 
 		if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
 
@@ -80,8 +86,11 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 				UserContextHolder.setContext(context);
 
 			} catch (Exception e) {
-				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-				response.getWriter().write(e.getMessage());
+				e.printStackTrace();
+//				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//				response.getWriter().write(e.getMessage());
+
+				resolver.resolveException(request, response, null, e);
 				return;
 			} /*
 				 * finally { UserContextHolder.clear(); }

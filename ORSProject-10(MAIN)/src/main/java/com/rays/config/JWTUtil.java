@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rays.exception.UnauthorizedException;
 
 @Component
 public class JWTUtil {
@@ -55,7 +56,7 @@ public class JWTUtil {
 	public boolean validateToken(String token, String expectedLoginId) throws Exception {
 		String[] parts = token.split("\\.");
 		if (parts.length != 3) {
-			throw new Exception("Invalid JWT token");
+			throw new UnauthorizedException("Invalid JWT token");
 		}
 
 		String payloadJson = decode(parts[1]);
@@ -63,15 +64,15 @@ public class JWTUtil {
 		String expectedSignature = sign(parts[0] + "." + parts[1], jwtSecret);
 
 		if (!expectedSignature.equals(parts[2])) {
-			throw new Exception("JWT signature does not match");
+			throw new UnauthorizedException("JWT signature does not match");
 		}
 
 		if (!expectedLoginId.equals(tokenLoginId)) {
-			throw new Exception("JWT subject (loginId) does not match");
+			throw new UnauthorizedException("JWT subject (loginId) does not match");
 		}
 
 		if (isTokenExpired(payloadJson)) {
-			throw new Exception("JWT token has expired");
+			throw new UnauthorizedException("JWT token has expired");
 		}
 
 		return true;
