@@ -1,3 +1,12 @@
+# Use the official Nginx image as a base image
 FROM nginx:alpine
-COPY dist/ /usr/share/nginx/html
+
+# Copy the built Angular application into the Nginx container
+COPY /dist /usr/share/nginx/html
+
+# Expose port 80
 EXPOSE 80
+
+
+# Default command to run Nginx
+CMD ["nginx", "-g", "daemon off;"]

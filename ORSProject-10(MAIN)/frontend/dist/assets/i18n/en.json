@@ -1,0 +1,143 @@
+{
+    "Login": "Login",
+    "Sign In": "Sign In",
+    "Sign Up": "Sign Up",
+    "Forget my password?": "Forget my password?",
+    "Login Id": "Login Id",
+    "Password": "Password",
+    "UserRegistration": "User Registration",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "LoginId": "Login Id",
+    "DateOfBirth": "Date of Birth",
+    "Gender": "Gender",
+    "Mobile": "Mobile",
+    "Buttons": {
+        "SignUp": "Sign Up",
+        "Reset": "Reset",
+        "Save": "Save",
+        "Update": "Update",
+        "List": "List",
+        "Search": "Search",
+        "Delete": "Delete",
+        "Next": "Next",
+        "Previous": "Previous",
+        "Add": "Add"
+    },
+    "GenderOptions": {
+        "Select": "------------Select------------",
+        "Male": "Male",
+        "Female": "Female"
+    },
+    "Greetings": {
+        "HiUser": "Hi, {{name}} ( {{role}} )",
+        "HiGuest": "Hi, Guest",
+        "welcome": "Welcome"
+    },
+    "Links": {
+        "MyProfile": "My Profile",
+        "ChangePassword": "Change Password",
+        "AddUser": "Add User",
+        "UserList": "User List",
+        "AddRole": "Add Role",
+        "RoleList": "Role List",
+        "AddCollege": "Add College",
+        "CollegeList": "College List",
+        "AddStudent": "Add Student",
+        "StudentList": "Student List",
+        "AddMarksheet": "Add Marksheet",
+        "MarksheetList": "Marksheet List",
+        "AddCourse": "Add Course",
+        "CourseList": "Course List",
+        "AddSubject": "Add Subject",
+        "SubjectList": "Subject List",
+        "AddTimetable": "Add Timetable",
+        "TimetableList": "Timetable List",
+        "AddFaculty": "Add Faculty",
+        "FacultyList": "Faculty List",
+        "Logout": "Logout",
+        "Dashboard": "Dashboard",
+        "Login": "Login",
+        "MarksheetMeritList": "Marksheet Merit List",
+        "GetMarksheet": "Get Marksheet",
+        "Javadoc": "Javadoc"
+    },
+    "LocaleSelect": {
+        "Select": "-------Select-------",
+        "English": "English",
+        "Hindi": "Hindi"
+    },
+    "UserForm": {
+        "AddUser": "Add User",
+        "UpdateUser": "Update User",
+        "FirstName": "First Name",
+        "LastName": "Last Name",
+        "LoginId": "Login Id",
+        "Password": "Password",
+        "DateOfBirth": "Date of Birth",
+        "Gender": "Gender",
+        "Role": "Role",
+        "Mobile": "Mobile",
+        "AlternateMobile": "Alternate Mobile",
+        "Status": "Status",
+        "UploadImage": "Upload Image",
+        "Placeholders": {
+            "FirstName": "Enter First Name",
+            "LastName": "Enter Last Name",
+            "LoginId": "Enter Login ID",
+            "Password": "Enter Password",
+            "DateOfBirth": "Select Date of Birth",
+            "Mobile": "Enter Mobile No.",
+            "AlternateMobile": "Enter Alternate Mobile No."
+        },
+        "SelectOptions": {
+            "Select": "------------Select------------",
+            "Male": "Male",
+            "Female": "Female",
+            "Active": "Active",
+            "Inactive": "Inactive"
+        },
+        "Table": {
+            "SNo": "S.No",
+            "Name": "Name",
+            "Description": "Description",
+            "Edit": "Edit",
+            "Image": "Image"
+        }
+    },
+    "RoleForm": {
+        "AddRole": "Add Role",
+        "UpdateRole": "Update Role",
+        "Name": "Name",
+        "Description": "Description",
+        "Placeholders": {
+            "Name": "Enter Role Name",
+            "Description": "Enter Short Description"
+        }
+    },
+    "RoleList": {
+        "Title": "Role List",
+        "SearchLabel": "Role",
+        "Select": "------------Select------------",
+        "Buttons": {
+            "Search": "Search",
+            "Reset": "Reset",
+            "Previous": "Previous",
+            "Next": "Next",
+            "New": "New",
+            "Delete": "Delete",
+            "Back": "Back"
+        }
+    },
+    "Navbar": {
+        "User": "User",
+        "Role": "Role",
+        "College": "College",
+        "Student": "Student",
+        "Marksheet": "Marksheet",
+        "Course": "Course",
+        "Subject": "Subject",
+        "Timetable": "Timetable",
+        "Faculty": "Faculty"
+    }
+}
