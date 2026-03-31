@@ -1,26 +1,46 @@
+version: "3.8"
+
 services:
 
   mysql:
-    image: mysql:8
-    container_name: mysql-container
+    image: mysql:8.0
+    container_name: ors-mysql
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: orsproject10
+      MYSQL_USER: orsuser
+      MYSQL_PASSWORD: orspass
     ports:
       - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
 
   backend:
-    build: .
-    container_name: backend-container
-    ports:
-      - "8080:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ors-backend
+    restart: always
     depends_on:
       - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/orsproject10
+      SPRING_DATASOURCE_USERNAME: orsuser
+      SPRING_DATASOURCE_PASSWORD: orspass
+    ports:
+      - "8080:8080"
 
   frontend:
-    build: ../frontend
-    container_name: frontend-container
-    ports:
-      - "4200:80"
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    container_name: ors-frontend
+    restart: always
     depends_on:
       - backend
+    ports:
+      - "4200:80"
+
+volumes:
+  mysql-data:
